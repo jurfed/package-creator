@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.TextFieldListCell?>
+<BorderPane fx:id="rootView" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.octavianonline.packagepreparer.view.main.MainScreen">
+
+
+    <top>
+        <TabPane minHeight="500.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" fx:id="mainTab">
+            <tabs>
+                <Tab text="Package selection" fx:id="choose">
+                    <content>
+                        <TitledPane collapsible="false" minHeight="300.0" minWidth="300.0"
+                                    text="Please select a package and fill in all fields">
+                            <content>
+
+                                <VBox spacing="9">
+                                <children>
+                                    <HBox spacing="50" alignment="CENTER">
+
+                                        <children>
+                                            <VBox spacing="9">
+                                                <children>
+                                                    <Button fx:id="buttonOpen" minHeight="10.0" minWidth="20.0"
+                                                            text="Open package" alignment="TOP_LEFT"
+                                                            onAction="#openAction"/>
+
+                                                    <Label fx:id="packageNameLabel" prefHeight="30.0" text="Package Name:"/>
+                                                    <Label fx:id="versionLabel" prefHeight="30.0" text="Version:"/>
+                                                    <Label fx:id="descriptionLabel" prefHeight="30.0" text="Description:"/>
+                                                    <Label fx:id="typeLabel" prefHeight="30.0" text="Type:"/>
+
+                                                    <Label fx:id="fileNameLabel" prefHeight="30.0" text="File Name:"/>
+                                                    <Label fx:id="pathLabel" prefHeight="30.0" text="Path:"/>
+                                                    <Label fx:id="manufacturerLabel" prefHeight="30.0" text="Manufacturer:"/>
+
+                                                </children>
+                                            </VBox>
+                                            <VBox spacing="10">
+                                                <children>
+                                                    <TextField fx:id="openPackage" text="" minHeight="30.0" minWidth="500"
+                                                               editable="false"
+                                                               style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;"/>
+
+                                                    <TextField fx:id="packageNameText" text="" minHeight="30.0"
+                                                               style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;" minWidth="500"
+                                                               disable="true"/>
+                                                    <TextField fx:id="versionText" text="" minHeight="30.0" minWidth="500"
+                                                               disable="true"
+                                                               style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;" />
+                                                    <TextField fx:id="descriptionText" text="" minHeight="30.0" minWidth="500"
+                                                               style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;"
+                                                               disable="true"/>
+
+                                                    <HBox spacing="20">
+                                                        <children>
+                                                            <RadioButton text="Content" selected="true" fx:id="checkContent">
+                                                                <toggleGroup>
+                                                                    <ToggleGroup fx:id="typeGroup"/>
+                                                                </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton text="Os" fx:id="checkOs">
+                                                                <toggleGroup>
+                                                                    <fx:reference source="typeGroup"/>
+                                                                </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton text="EGM" fx:id="checkEGM">
+                                                                <toggleGroup>
+                                                                    <fx:reference source="typeGroup"/>
+                                                                </toggleGroup>
+                                                            </RadioButton>
+                                                        </children>
+                                                    </HBox>
+
+                                                    <!--                                                <ComboBox fx:id="typeCombo" minHeight="30.0" maxWidth="300"/>-->
+
+                                                    <TextField fx:id="fileNameText" text="" minHeight="30.0" minWidth="500"
+                                                               editable="false"
+                                                               style="-fx-background-color: #E0E0E2;"/>
+                                                    <TextField fx:id="pathText" text="" minHeight="30.0" minWidth="500"
+                                                               disable="true"
+                                                               style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;"/>
+
+
+                                                    <VBox spacing="5">
+                                                        <children>
+                                                            <TextField fx:id="manufacturerText" text="" minHeight="30.0"
+                                                                       style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;" minWidth="500"
+                                                                       disable="true"/>
+                                                            <ListView fx:id="manuList" minHeight="150" maxHeight="100" minWidth="500"
+                                                                      editable="true" />
+                                                        </children>
+                                                    </VBox>
+
+                                                </children>
+                                            </VBox>
+
+
+                                        </children>
+                                    </HBox>
+
+                                    <Separator orientation="HORIZONTAL"/>
+
+
+                                    <HBox spacing="20" alignment="CENTER">
+                                    <children>
+
+                                    <CheckBox fx:id="restorePackage" text="Restore previous package configuration" onAction="#activateRestore" disable="true" alignment="CENTER"/>
+
+                                    </children>
+                                    </HBox>
+
+                                    <HBox spacing="20" alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="buttonOpenManifest" minHeight="10.0" minWidth="20.0"
+                                                text="Open manifest" alignment="TOP_LEFT"
+                                                onAction="#openManifest" disable="true"/>
+
+                                        <TextField fx:id="restorePath" text="" minHeight="30.0" editable="false"
+                                                   style="-fx-background-color: #E0E0E2; -fx-border-color: #CCCCCC;" minWidth="500"
+                                                   disable="false"/>
+
+                                    </children>
+                                    </HBox>
+
+
+                                </children>
+                                </VBox>
+
+
+
+
+                            </content>
+
+                        </TitledPane>
+                    </content>
+                </Tab>
+                <Tab text="Select critical files" disable="true" fx:id="criticFile">
+                    <content>
+                        <TitledPane collapsible="false" minHeight="500.0" minWidth="300.0"
+                                    text="Please select critical files">
+                            <content>
+                                <HBox spacing="20">
+                                    <VBox spacing="10">
+                                        <children>
+                                            <HBox spacing="10">
+                                                <Label minHeight="30.0" text="Filter:"/>
+                                                <TextField fx:id="criticFilter" text="" minHeight="20.0"
+                                                           prefWidth="150" editable="true"/>
+                                                <Button fx:id="refreshCritical" minHeight="10.0" minWidth="70"
+                                                        text="refresh" alignment="TOP_LEFT"
+                                                        onAction="#refreshCritical"/>
+                                            </HBox>
+                                            <TreeView fx:id="criticalTreeView" layoutX="0" layoutY="0" minHeight="500"
+                                                      prefWidth="300.0" minWidth="400"/>
+                                        </children>
+                                    </VBox>
+
+                                    <Separator orientation="VERTICAL"/>
+
+                                    <VBox spacing="10">
+                                        <children>
+                                            <Label minHeight="30.0" text="Selected files:"/>
+                                            <ListView fx:id="criticalListView" minHeight="500.0"
+                                                      editable="true" minWidth="400"/>
+                                        </children>
+                                    </VBox>
+                                </HBox>
+
+                            </content>
+
+                        </TitledPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Select config files" disable="true" fx:id="configFiles">
+                    <content>
+                        <TitledPane collapsible="false" minHeight="500.0" minWidth="300.0"
+                                    text="Please select configuration files">
+                            <content>
+                                <HBox spacing="20">
+                                    <VBox spacing="10">
+                                        <children>
+                                            <HBox spacing="10">
+                                                <Label minHeight="30.0" text="Filter:"/>
+                                                <TextField fx:id="configFilter" text="" minHeight="20.0"
+                                                           prefWidth="150" editable="true"/>
+                                                <Button fx:id="refreshConfig" minHeight="10.0" minWidth="70"
+                                                        text="refresh" alignment="TOP_LEFT"
+                                                        onAction="#refreshConfig"/>
+                                            </HBox>
+                                            <TreeView fx:id="configTreeView" layoutX="0" layoutY="0" minHeight="500"
+                                                      prefWidth="300.0" minWidth="400"/>
+                                        </children>
+                                    </VBox>
+
+                                    <Separator orientation="VERTICAL"/>
+
+                                    <VBox spacing="10">
+                                        <children>
+                                            <Label minHeight="30.0" text="Selected files:"/>
+                                            <ListView fx:id="configListView" minHeight="500.0"
+                                                      editable="true" maxWidth="300" minWidth="400"/>
+                                        </children>
+                                    </VBox>
+                                </HBox>
+
+                            </content>
+
+                        </TitledPane>
+                    </content>
+                </Tab>
+                <Tab text="Dependency" disable="true" fx:id="dependFiles">
+                    <content>
+                        <TitledPane collapsible="false" minHeight="300.0" minWidth="300.0" text="Depends">
+                            <content>
+
+                                <HBox spacing="20">
+                                    <children>
+                                        <VBox spacing="10">
+                                            <children>
+                                                <HBox spacing="20">
+                                                    <children>
+
+                                                        <VBox spacing="10">
+                                                            <children>
+                                                                <Label minHeight="30.0" text="dependency name"/>
+                                                                <TextField fx:id="dependencyNameText" text=""
+                                                                           minHeight="30.0"
+                                                                           maxWidth="200"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <VBox spacing="10">
+                                                            <children>
+                                                                <Label minHeight="30.0" text="sign"/>
+                                                                <ComboBox fx:id="signCombo" minHeight="30.0"
+                                                                          maxWidth="80"
+                                                                          minWidth="80"/>
+                                                            </children>
+                                                        </VBox>
+
+                                                        <VBox spacing="10">
+                                                            <children>
+                                                                <Label minHeight="30.0" text="version"/>
+                                                                <TextField fx:id="dependencyVersion" text=""
+                                                                           minHeight="30.0"
+                                                                           maxWidth="100"/>
+                                                                <Button fx:id="addDependency" minHeight="10.0"
+                                                                        minWidth="100.0"
+                                                                        text="Add to list" alignment="TOP_RIGHT"
+                                                                        disable="true"
+                                                                        onAction="#addToDependencyList"/>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <ListView fx:id="tips" minHeight="30.0" maxHeight="322"
+                                                          editable="true" maxWidth="400"/>
+                                            </children>
+                                        </VBox>
+
+                                        <Separator orientation="VERTICAL">
+
+                                        </Separator>
+                                        <VBox spacing="10">
+                                            <children>
+                                                <HBox spacing="20">
+                                                    <children>
+                                                        <Label minHeight="30.0" text="selected dependency list"/>
+                                                        <Button fx:id="deleteDependency" minHeight="10.0"
+                                                                minWidth="20.0"
+                                                                text="Remove selected" alignment="TOP_LEFT"
+                                                                onAction="#removeDependency"/>
+
+                                                    </children>
+                                                </HBox>
+                                                <ListView fx:id="dependencyListView" minHeight="30.0"
+                                                          editable="true" minWidth="350"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                            </content>
+
+                        </TitledPane>
+                    </content>
+                </Tab>
+                <Tab text="Build package" disable="true" fx:id="duildFiles">
+                    <content>
+                        <TitledPane collapsible="false" minHeight="500.0" minWidth="300.0" text="Build"
+                                    fx:id="forBuild">
+                            <content>
+
+                                <VBox spacing="10">
+                                    <children>
+                                        <VBox spacing="0">
+                                            <children>
+                                                <HBox spacing="20">
+                                                    <Button fx:id="buttonBuild" minHeight="10.0" minWidth="20.0"
+                                                            text="Build package"
+                                                            alignment="TOP_LEFT"
+                                                            onAction="#build"/>
+
+                                                    <ProgressBar fx:id="progressId" progress="0.0" prefWidth="600"/>
+                                                    <ProgressIndicator fx:id="progressIndId" minWidth="60"
+                                                                       minHeight="60"
+                                                                       visible="false"/>
+                                                </HBox>
+                                                <Button fx:id="breakButton" minHeight="10.0" minWidth="20.0"
+                                                        text="Break"
+                                                        alignment="TOP_LEFT"
+                                                        disable="true"
+                                                        onAction="#breakZipping"/>
+                                            </children>
+                                        </VBox>
+
+                                        <Label minHeight="30.0" text="Please press 'Build package' to build"
+                                               fx:id="buildMessage"/>
+                                        <TextArea fx:id="jsonText" prefWidth="500" prefHeight="400" editable="false"
+                                                  focusTraversable="false"/>
+                                    </children>
+                                </VBox>
+
+                            </content>
+
+                        </TitledPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+
+    </top>
+
+    <center>
+        <HBox spacing="20" maxWidth="300">
+            <!--            <Button fx:id="buttonOpen" minHeight="10.0" minWidth="20.0" text="Open package" alignment="TOP_LEFT"
+                                onAction="#openAction"/>
+                        <TextField fx:id="openPackage" text="" minHeight="30.0" maxWidth="300"/>-->
+        </HBox>
+
+    </center>
+    <!--        <bottom>
+                <ScrollPane BorderPane.alignment="TOP_CENTER" maxHeight="280" minHeight="280" vbarPolicy="ALWAYS" fx:id="scrollPaneId">
+                    <content>
+
+                        <TextFlow fx:id="textFlowLog" lineSpacing="10.0" minWidth="750" maxWidth="750">
+                            <StackPane.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </StackPane.margin>
+                        </TextFlow>
+                    </content>
+
+                </ScrollPane>
+            </bottom>-->
+
+</BorderPane>

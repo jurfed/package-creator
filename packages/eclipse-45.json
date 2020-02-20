@@ -1,0 +1,14 @@
+{
+  "name": "eclipse",
+  "version": "45",
+  "description": "dfg",
+  "type": "Content",
+  "manufacturer": "gfd",
+  "fileName": "eclipse-45.zip",
+  "size": 15783512,
+  "checksum": "9a6f045794d1dbf7618f5cb9a4e406b0ef17e742",
+  "path": "/dfg",
+  "dependencies": [
+    "dfg|>=|44"
+  ]
+}

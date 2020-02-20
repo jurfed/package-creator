@@ -1,0 +1,7 @@
+.split-pane {
+    -fx-box-border: transparent;
+}
+
+.menu-item .label{
+    -fx-min-width: 100;
+}

@@ -1,0 +1,25 @@
+[Tt]arget/
+*.class
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+!core/src/test/java/resources/xml.jar
+!/runtimes/desktop/src/main/resources/gox-video-r2v-decoder64.dll

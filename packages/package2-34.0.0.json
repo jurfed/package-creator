@@ -1,0 +1,14 @@
+{
+  "name": "package2",
+  "version": "34.0.0",
+  "description": "dfg",
+  "type": "Content",
+  "manufacturer": "gdfs",
+  "fileName": "package2-34.0.0.zip",
+  "size": 5,
+  "checksum": "33892a4ae7739dd7f23bb6436f8653c24a82e381",
+  "path": "/sdfg",
+  "dependencies": [
+    "dfg|>=|44"
+  ]
+}
